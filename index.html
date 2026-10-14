@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>cyberia.meme — the meme state</title>
+<meta name="description" content="memes of the cyberstate. a meme is a particle: make one, mint it, link it. every meme here has a hash and a URL." />
+<link rel="canonical" href="https://cyberia.meme/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="cyberia.meme" />
+<meta property="og:url" content="https://cyberia.meme/" />
+<meta property="og:title" content="cyberia.meme — the meme state" />
+<meta property="og:description" content="a meme is a particle. make one, mint it, link it." />
+<meta property="og:image" content="https://cyberia.meme/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23000"/><text x="32" y="46" font-size="40" text-anchor="middle">🤖</text></svg>' />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script type="module" src="https://lytics.cyb.ai/tracker/loader.js" data-endpoint="https://lytics.cyb.ai"></script>
+<style>
+:root{--c1:#ff1a00;--c2:#ff7a00;--c3:#ffc400;--c4:#00ff41;--c5:#00b8ff;--c6:#1e00ff;--c7:#7a00ff;--ink:#f2f2f2;--mute:#8a8a8a;--mono:'JetBrains Mono',Menlo,monospace;--sans:'Play',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#000}
+body{font-family:var(--sans);color:var(--ink);min-height:100svh;background:#000;overflow-x:hidden}
+a{color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.35}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:28px 22px 60px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:40px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:22px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--c4);box-shadow:0 0 18px var(--c4)}
+.brand em{font-style:normal;color:var(--c4)}
+nav{margin-left:auto;display:flex;gap:16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+nav a{text-decoration:none;opacity:.7}nav a:hover{opacity:1;color:var(--c4)}
+h1{font-size:clamp(40px,8vw,112px);line-height:.95;letter-spacing:-.02em;margin:0 0 16px}
+h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c6),var(--c7));-webkit-background-clip:text;background-clip:text}
+.lead{font-size:clamp(16px,1.6vw,21px);max-width:60ch;line-height:1.45;margin-bottom:12px}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--c4);margin-bottom:14px}
+.mute{color:var(--mute);font-size:14px;line-height:1.5;max-width:70ch}
+section{margin-top:56px}
+h2{font-size:clamp(26px,3.6vw,48px);margin-bottom:18px;line-height:1.05}
+h2 em{font-style:normal;color:var(--c3)}
+/* maker */
+.maker{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.panel{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);font-family:var(--mono)}
+label{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin:12px 0 6px}
+input[type=text],textarea{width:100%;background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:8px;padding:12px 14px;font:inherit;font-size:16px;outline:none}
+input:focus,textarea:focus{border-color:var(--c4)}
+.bgs{display:flex;gap:8px;flex-wrap:wrap}
+.bgs button{width:38px;height:38px;border-radius:9px;border:2px solid transparent;cursor:pointer;font-size:20px;display:grid;place-items:center;background:#111;color:#fff}
+.bgs button.on{border-color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.btn{cursor:pointer;border:0;border-radius:10px;padding:13px 20px;font:700 14px var(--mono);letter-spacing:.06em;background:var(--c4);color:#000}
+.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn:hover{filter:brightness(1.08)}
+.out{margin-top:12px;font-size:12px;line-height:1.6;color:var(--mute);word-break:break-all}
+.out b{color:var(--c4)}
+.preview{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.18);aspect-ratio:1;background:#000}
+.preview svg{display:block;width:100%;height:100%}
+/* wall */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#000;cursor:pointer;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.5)}
+.card svg{display:block;width:100%;height:auto}
+.card .acts{position:absolute;right:8px;bottom:8px;display:flex;gap:6px;opacity:0;transition:opacity .15s}
+.card:hover .acts{opacity:1}
+.card .acts button{font:700 11px var(--mono);padding:6px 9px;border-radius:7px;border:0;background:#fff;color:#000;cursor:pointer}
+.rail{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:40px 0 20px}
+.rail i{flex:1}
+footer{margin-top:40px;font-family:var(--mono);font-size:12px;color:var(--mute);line-height:1.8}
+footer a{color:var(--ink);text-decoration:none}footer a:hover{color:var(--c4)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#fff;color:#000;font:700 13px var(--mono);padding:10px 16px;border-radius:10px;opacity:0;transition:.25s;z-index:9;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:820px){.maker{grid-template-columns:1fr}header{margin-bottom:24px}nav{margin-left:0;width:100%}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="wrap">
+<header>
+  <a class="brand" href="/"><span class="dot"></span>cyberia<em>.meme</em></a>
+  <nav><a href="https://cyber.page">cyber.page</a><a href="https://cyberia.to">cyberia.to</a><a href="https://cyb.ai">cyb.ai</a><a href="#make">make</a></nav>
+</header>
+
+<p class="kick">the meme state · memes of the cyberstate</p>
+<h1>a meme is <em>a particle.</em></h1>
+<p class="lead">content-addressed, linkable, rankable. every meme on this page has a hash and a URL. make one, mint it, send it to someone who knows nothing yet.</p>
+<p class="mute">no accounts, no upload, no server: your meme is rendered in your browser, hashed with sha-256, and lives in its link. on cyber the same bytes get a hemera particle and a place in the cybergraph.</p>
+
+<section id="make">
+  <h2>make one. <em>mint it.</em></h2>
+  <div class="maker">
+    <div class="panel">
+      <label>top</label><input type="text" id="top" maxlength="60" value="copying earns nothing" />
+      <label>bottom</label><input type="text" id="bot" maxlength="60" value="a perfect copy surprises no one" />
+      <label>background</label><div class="bgs" id="bgs"></div>
+      <label>figure</label><div class="bgs" id="figs"></div>
+      <div class="row"><button class="btn" id="mint">mint · png</button><button class="btn ghost" id="copy">copy link</button><button class="btn ghost" id="rnd">random</button></div>
+      <div class="out" id="out">particle — mint to hash it</div>
+    </div>
+    <div class="preview" id="preview"></div>
+  </div>
+</section>
+
+<section>
+  <h2>the wall. <em>canon, as memes.</em></h2>
+  <p class="mute" style="margin-bottom:16px">every line below is from the protocol's own pages. click a card to load it into the maker; hover for png and link.</p>
+  <div class="wall" id="wall"></div>
+</section>
+
+<div class="rail"><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c4)"></i><i style="background:var(--c5)"></i><i style="background:var(--c6)"></i><i style="background:var(--c7)"></i></div>
+<footer>
+  cyberia.meme is a door of the cyberstate · <a href="https://cyberia.to">cyberia.to</a> · <a href="https://cyber.page">cyber.page</a> · <a href="https://cyber.page/litepaper/">the litepaper</a> · <a href="https://cyb.ai">get the robot</a><br>
+  the background is a real sample of the bostrom cybergraph: 1,200 particles, 6,000 cyberlinks · don't trust. don't fear. don't beg.
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const COLS = ['#ff1a00', '#ff7a00', '#ffc400', '#00ff41', '#00b8ff', '#1e00ff', '#7a00ff'];
+const BGS = [...COLS.map((c) => ({ k: c, c })), { k: 'graph', c: '#000' }, { k: 'black', c: '#000' }, { k: 'white', c: '#fff' }];
+const FIGS = ['', '🤖', '🧠', '👁', '⚛', '🛰', '🪐', '🔥', '💸', '🐈', '🧊', '🌐'];
+const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* the canon, as memes: [top, bottom, bg, figure] */
+const CANON = [
+  ['copying earns nothing', 'a perfect copy surprises no one', '#00ff41', '🐈'],
+  ['five years in', 'nine orders of magnitude early. nobody is late.', '#ff7a00', '🪐'],
+  ['the proof is the claim', 'the claim is the mining', '#00b8ff', '⚛'],
+  ['speak without fear', 'the link is public. the author is private.', '#1e00ff', '👁'],
+  ["don't trust. don't fear.", "don't beg.", '#000', '🤖'],
+  ['superintelligence', 'is a number', '#ff1a00', '🧠'],
+  ['no individual ant', 'understands the colony. the colony understands itself.', '#ffc400', '🌐'],
+  ['money for knowledge', 'minted when the network learns', '#7a00ff', '💸'],
+  ['idle capital', 'earns nothing', '#1e00ff', '🧊'],
+  ['the medium is not slow software', 'the medium is physics', '#000', '🛰'],
+  ['a thermostat', 'not a calendar', '#ff7a00', '🔥'],
+  ['any start.', 'the same end.', '#ffc400', '⚛'],
+  ['the hash', 'is the accounting', '#00b8ff', '💸'],
+  ['a frozen protocol', 'for collective lifeforms', '#1e00ff', '🧊'],
+  ['every weight', 'has an author', '#00ff41', '🧠'],
+  ['bostrom → transformer', 'in 62 seconds. no training budget.', '#ff1a00', '🤖'],
+  ['one focus', 'light-delay cannot split it', '#7a00ff', '🛰'],
+  ['a meme', 'is a particle', 'graph', ''],
+  ['emergence stops being philosophy', 'the moment it has an error bar', '#000', '📏'],
+  ['a protocol', 'does not upgrade', '#00b8ff', '🧊'],
+  ['intelligence has a price', 'this is the unit it is priced in', '#00ff41', '💸'],
+];
+
+/* ---- the real cybergraph, for backgrounds */
+let G = null; const loadG = fetch('graph.json').then((r) => r.json()).then((d) => { G = d; const xs = d.nodes.map((n) => n[2]), ys = d.nodes.map((n) => n[3]); G.cx = (Math.min(...xs) + Math.max(...xs)) / 2; G.cy = (Math.min(...ys) + Math.max(...ys)) / 2; G.maxd = Math.max(...d.nodes.map((n) => n[1])); drawBg(); }).catch(() => {});
+const graphSvg = (size, col) => { if (!G) return ''; let o = `<g stroke="${col}" stroke-opacity=".25" stroke-width="1">`; const P = G.nodes.map((n) => [size / 2 + (n[2] - G.cx) * size * 1.3, size / 2 + (n[3] - G.cy) * size * 1.3]); for (const [a, b] of G.links) o += `<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}"/>`; o += '</g>'; G.nodes.forEach((n, i) => { const d = n[1] / G.maxd; o += `<circle cx="${P[i][0].toFixed(1)}" cy="${P[i][1].toFixed(1)}" r="${(1.5 + 9 * Math.sqrt(d)).toFixed(1)}" fill="${d > .35 ? '#fff' : col}" fill-opacity="${.5 + .5 * d}"/>`; }); return o; };
+
+/* ---- the meme renderer (one function for preview, wall and png) */
+const wrap = (t, max) => { const w = t.split(' '), lines = []; let cur = ''; for (const x of w) { if ((cur + ' ' + x).trim().length > max && cur) { lines.push(cur); cur = x; } else cur = (cur + ' ' + x).trim(); } if (cur) lines.push(cur); return lines.slice(0, 4); };
+const meme = (top, bot, bg, fig, size = 800) => {
+  const S = size, dark = bg === 'white'; const txt = dark ? '#000' : '#fff', stroke = dark ? '#fff' : '#000';
+  const fill = bg === 'graph' || bg === 'black' ? '#000' : bg === 'white' ? '#fff' : bg;
+  let o = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}" width="${S}" height="${S}"><rect width="${S}" height="${S}" fill="${fill}"/>`;
+  if (bg === 'graph') o += graphSvg(S, '#ff1a00');
+  if (fig) o += `<text x="${S / 2}" y="${S * .62}" font-size="${S * .42}" text-anchor="middle">${fig}</text>`;
+  const line = (lines, y0, anchorBottom) => { const fs = Math.min(S * .11, S * .8 / Math.max(...lines.map((l) => l.length)) * 1.9); const lh = fs * 1.05; lines.forEach((l, i) => { const y = anchorBottom ? y0 - (lines.length - 1 - i) * lh : y0 + i * lh; o += `<text x="${S / 2}" y="${y.toFixed(0)}" font-family="Impact,'Arial Black',Haettenschweiler,sans-serif" font-size="${fs.toFixed(0)}" text-anchor="middle" fill="${txt}" stroke="${stroke}" stroke-width="${(fs * .07).toFixed(1)}" paint-order="stroke" style="text-transform:uppercase;letter-spacing:.01em">${esc(l.toUpperCase())}</text>`; }); };
+  if (top) line(wrap(top, 22), S * .14, false);
+  if (bot) line(wrap(bot, 22), S * .93, true);
+  o += `<text x="${S - 14}" y="${S - 12}" font-family="JetBrains Mono,Menlo,monospace" font-size="${S * .022}" text-anchor="end" fill="${txt}" fill-opacity=".55">cyberia.meme</text>`;
+  return o + '</svg>';
+};
+
+/* ---- state, url, hash */
+const st = { top: 'copying earns nothing', bot: 'a perfect copy surprises no one', bg: '#00ff41', fig: '🐈' };
+const fromHash = () => { const p = new URLSearchParams(location.hash.slice(1)); if (p.has('t') || p.has('b')) { st.top = p.get('t') || ''; st.bot = p.get('b') || ''; st.bg = p.get('bg') || '#00ff41'; st.fig = p.get('f') || ''; } };
+const toHash = () => '#' + new URLSearchParams({ t: st.top, b: st.bot, bg: st.bg, f: st.fig }).toString();
+const sha = async (buf) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', buf)).slice(0, 16), (b) => b.toString(16).padStart(2, '0')).join('');
+const toast = (m) => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('on'), 1600); };
+
+const render = () => { $('#preview').innerHTML = meme(st.top, st.bot, st.bg, st.fig); document.querySelectorAll('#bgs button').forEach((b) => b.classList.toggle('on', b.dataset.k === st.bg)); document.querySelectorAll('#figs button').forEach((b) => b.classList.toggle('on', b.dataset.k === st.fig)); history.replaceState(null, '', toHash()); };
+const png = (svg, size = 1200) => new Promise((res) => { const img = new Image(); const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' })); img.onload = () => { const c = document.createElement('canvas'); c.width = c.height = size; const x = c.getContext('2d'); x.drawImage(img, 0, 0, size, size); URL.revokeObjectURL(url); c.toBlob((b) => res(b), 'image/png'); }; img.src = url; });
+const mint = async (top, bot, bg, fig) => { const b = await png(meme(top, bot, bg, fig, 1200)); const h = await sha(await b.arrayBuffer()); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `cyberia-meme-${h.slice(0, 8)}.png`; a.click(); return h; };
+
+/* ---- ui */
+BGS.forEach((b) => { const el = document.createElement('button'); el.dataset.k = b.k; el.style.background = b.k === 'graph' ? 'radial-gradient(circle,#ff1a00 0,#000 70%)' : b.c; el.title = b.k; el.onclick = () => { st.bg = b.k; render(); }; $('#bgs').appendChild(el); });
+FIGS.forEach((f) => { const el = document.createElement('button'); el.dataset.k = f; el.textContent = f || '∅'; el.onclick = () => { st.fig = f; render(); }; $('#figs').appendChild(el); });
+$('#top').oninput = (e) => { st.top = e.target.value; render(); }; $('#bot').oninput = (e) => { st.bot = e.target.value; render(); };
+$('#mint').onclick = async () => { const h = await mint(st.top, st.bot, st.bg, st.fig); $('#out').innerHTML = `particle <b>${h}</b> · sha-256 of the png you just minted · link: <b>${location.href}</b>`; toast('minted'); };
+$('#copy').onclick = () => { navigator.clipboard?.writeText(location.href).then(() => toast('link copied')); };
+$('#rnd').onclick = () => { const c = CANON[Math.random() * CANON.length | 0]; [st.top, st.bot, st.bg, st.fig] = c; $('#top').value = st.top; $('#bot').value = st.bot; render(); };
+
+const wall = $('#wall');
+CANON.forEach(([t, b, bg, f]) => { const d = document.createElement('div'); d.className = 'card'; d.innerHTML = meme(t, b, bg, f, 480) + `<div class="acts"><button data-a="png">png</button><button data-a="link">link</button></div>`; d.onclick = (e) => { const a = e.target.dataset.a; if (a === 'png') { e.stopPropagation(); mint(t, b, bg, f).then((h) => toast('minted ' + h.slice(0, 8))); return; } if (a === 'link') { e.stopPropagation(); const u = location.origin + location.pathname + '#' + new URLSearchParams({ t, b, bg, f }).toString(); navigator.clipboard?.writeText(u).then(() => toast('link copied')); return; } [st.top, st.bot, st.bg, st.fig] = [t, b, bg, f]; $('#top').value = t; $('#bot').value = b; render(); $('#make').scrollIntoView({ behavior: 'smooth' }); }; wall.appendChild(d); });
+loadG.then(() => { document.querySelectorAll('.card').forEach((d, i) => { if (CANON[i][2] === 'graph') d.innerHTML = meme(...CANON[i], 480) + d.querySelector('.acts').outerHTML; }); render(); });
+
+/* ---- background: the real graph, slowly turning */
+const cv = $('#bg'), cx2 = cv.getContext('2d');
+const drawBg = () => { const dpr = devicePixelRatio, W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr; if (!G) return; const t = performance.now() / 1000, ang = t * .02, s = Math.max(W, H) * .6, c = Math.cos(ang), sn = Math.sin(ang); const P = G.nodes.map((n) => { const x = n[2] - G.cx, y = n[3] - G.cy; return [W / 2 + (x * c - y * sn) * 2 * s, H / 2 + (x * sn + y * c) * 2 * s]; }); cx2.clearRect(0, 0, W, H); cx2.lineWidth = .5 * dpr; cx2.strokeStyle = '#ff1a00'; cx2.globalAlpha = .25; cx2.beginPath(); for (const [a, b] of G.links) { cx2.moveTo(P[a][0], P[a][1]); cx2.lineTo(P[b][0], P[b][1]); } cx2.stroke(); cx2.globalAlpha = .6; cx2.fillStyle = '#ff1a00'; P.forEach((p, i) => { const r = (.8 + 2.5 * Math.sqrt(G.nodes[i][1] / G.maxd)) * dpr; cx2.beginPath(); cx2.arc(p[0], p[1], r, 0, Math.PI * 2); cx2.fill(); }); requestAnimationFrame(drawBg); };
+addEventListener('resize', () => { if (G) drawBg(); });
+
+fromHash(); $('#top').value = st.top; $('#bot').value = st.bot; render();
+})();
+</script>
+</body>
+</html>
