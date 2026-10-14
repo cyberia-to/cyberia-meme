@@ -6,7 +6,7 @@ seven colours, an emoji figure, or the real bostrom cybergraph sample (`graph.js
 anyone make one: top, bottom, background, figure → png minted in the browser, sha-256
 of the bytes shown as its particle, the whole meme encoded in the URL hash.
 
-no build. one `index.html`, `graph.json`, `og.png`.
+no build. `index.html` + `app.js` + `meme.css` on the house engine shared with cyber.page (`style.css` is a copy of `cyber/landing/style.css`: seven-colour chapters, rail, HUD, sound, fit system), `graph.json`, `og.png`. seven chapters: meme · particle · make · the wall · mint · spread · doors.
 
 ## deploy
 
@@ -19,6 +19,6 @@ no build. one `index.html`, `graph.json`, `og.png`.
 
 ## adding a meme to the wall
 
-edit `CANON` in `index.html`: `[top, bottom, background, figure]` where background is one
+edit `CANON` in `app.js`: `[top, bottom, background, figure]` where background is one
 of the seven hex colours, `'graph'`, `'black'` or `'white'`, and figure is an emoji or `''`.
 every line should come from a page of the graph.
