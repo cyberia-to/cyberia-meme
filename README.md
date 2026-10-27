@@ -12,7 +12,7 @@ no build. `index.html` + `app.js` + `meme.css` on the house engine shared with c
 
     nu scripts/deploy.nu          # rsync → cyberproxy:/var/www/html/cyberia.meme/
 
-- nginx: `/etc/nginx/sites-enabled/cyberia.meme` (mirrored in `cybernode/servers/cyberproxy/nginx/cyberia.meme`)
+- nginx: `/etc/nginx/sites-enabled/cyberia.meme` (mirrored in `apparatus/servers/cyberproxy/nginx/cyberia.meme`)
 - TLS: certbot, `cyberia.meme` + `www.cyberia.meme`
 - DNS (Namecheap, via `nc-dns` on cyberproxy): `A @ 167.235.28.94`, `CNAME www cyberia.meme.`
 - analytics: lytics tag in `<head>`
